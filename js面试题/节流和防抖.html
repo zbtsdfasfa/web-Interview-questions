@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            font-size: 26px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">1</div>
+    <script>
+        // let box = document.querySelector('.box');
+        // box.addEventListener('mousemove', change2, false)
+
+        // let index = 0;
+        // // 时间戳版本
+        // // 设置一个开始时间
+        // let start = new Date()
+        // function change() {
+        //     // 判断一下当前时间和初始时间的差值  小于1000毫秒就不执行
+        //     if (new Date() - start < 1000) return false
+        //     index++;
+        //     box.innerHTML = index
+        //     // 在更新一下时间
+        //     start = new Date()
+        // }
+
+
+        // let timer = null;
+        // let target = true;
+        // function change2(){
+        //     if(!target) return
+        //     target = false;
+        //     index++;
+        //     box.innerHTML = index;
+        //     timer =setTimeout(()=>{
+        //         target = true
+        //     },1000)
+        // }
+
+        //    改变一下this指向：
+        var str = '你好';
+        var obj = {
+            str: '这里是obj里面的str'
+        }
+        function fun(name,age) {
+            this.name = name;
+            this.age = age;
+            console.log(this, this.str);
+        }
+
+        // fun.call( obj, '黄弘章', 18)
+        // fun.bind( obj, '刘德华', 33)()
+        fun.apply( obj, ['黄弘章' , 44])
+        // // fun()
+        // // fun.call( obj )
+        // // fun.apply( obj )
+        // fun.bind(obj)()
+
+
+        // function fn(...args) {
+        //     console.log(this, args);
+        // }
+        // let obj = {
+        //     myname: "张三"
+        // }
+
+        // fn.apply(obj, [1, 2]); // this会变成传入的obj，传入的参数必须是一个数组；
+    </script>
+</body>
+
+</html>

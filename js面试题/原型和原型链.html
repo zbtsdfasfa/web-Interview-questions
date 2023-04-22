@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function doSomething(){
+        //     console.log(doSomething.prototype);
+        // }
+        // doSomething()
+
+        // function foo(){
+        //     this.name = '黄弘章';
+        //     console.log(this);
+        //     // return 1111;
+        //     return {
+        //         name:'刘德华'
+        //     }
+        // }
+        // // console.log(new foo());
+        // // console.log(foo.prototype == new foo().__proto__);
+        // console.log(new foo());
+
+        function Fun(age,name){
+            this.age = age;
+            this.name = name;
+            return [12,3,23]
+        }
+
+
+        function munew(Func,...args){
+            // 创建一个新的空对象
+            const obj ={};
+            // 将新对象原型指向构造函原型对象
+            obj.__proto__ = Func.prototype
+            // 改变this指向
+            let result = Func.apply(obj,args)
+            // 判断返回值
+            return result instanceof Object ? result :obj
+        }
+
+        console.log(munew(Fun,18,'黄弘章'));
+    </script>
+</body>
+</html>

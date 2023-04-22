@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul> -->
+
+    <p id="size-12">size12 </p><button onclick="makeSizer(12)">size12</button><br>
+    <p id="size-14">size14 </p><button onclick="makeSizer(14)">size14</button><br>
+    <p id="size-16">size16 </p><button onclick="makeSizer(16)">size16</button><br>
+    <script>
+        // function init(){
+        //     var name = '黄弘章';
+        //     function displayName(){
+        //         alert(name)
+        //     }
+        //     displayName()
+        // }
+        // init()
+
+
+
+        // var lis = document.getElementsByTagName("li");
+        // for(var i = 0; i < lis.length; i++){
+        //     (function(i){
+        //         lis[i].onclick = function(){
+        //         alert(i)
+        //     }
+        //     })(i)
+           
+        // }
+
+        function makeSizer(size) {
+  return function() {
+    document.body.style.fontSize = size + 'px';
+  };
+}
+
+var size12 = makeSizer(12);
+var size14 = makeSizer(14);
+var size16 = makeSizer(16);
+
+document.getElementById('size-12').onclick = size12;
+document.getElementById('size-14').onclick = size14;
+document.getElementById('size-16').onclick = size16;
+
+    </script>
+</body>
+</html>
