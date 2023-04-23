@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // call, apply,bind的作用就是改变this指向
+        var str = '你好';
+        var obj = {
+            str:'我是obj里面的文字'
+        }
+        function fun(name,age){
+            this.name = name ;
+            this.age = age;
+            console.log(this,this.str);
+        }
+        // ----这里是call
+        // fun.call( obj )
+
+        // -----这里是apply
+        // fun.apply( obj )
+
+        // -----这里是bind
+        // fun.bind( obj )()
+        // fun()
+        
+        // 区别一：call，apply，是立即执行的，而bind不会立即执行返回的是一个函数，需要加上一个括号才能执行
+         // ----这里是call
+        // fun.call( obj , '黄弘章' )
+
+        // -----这里是apply
+        // fun.apply( obj, ['黄弘章'] )
+
+        // -----这里是bind
+        fun.bind( obj , '黄弘章' ,19 )()
+
+        // 区别二：参数不同call，bind的参数就是直接写，而apply的参数是一个数组
+
+
+
+    </script>
+</body>
+</html>

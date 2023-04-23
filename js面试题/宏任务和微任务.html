@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宏任务微任务</title>
+</head>
+
+<body>
+    <script>
+
+        // js的执行机制：先执行同步任务，在执行异步任务在异步任务的时候就会执行事件循环（宏任务，微任务）
+        // 微任务执行完毕之后在进行红任务
+
+
+        // console.log(1)
+        // setTimeout(() => {
+        //     console.log(2)
+        // }, 0)
+        // new Promise((resolve, reject) => {
+        //     console.log('new Promise')
+        //     resolve()
+        // }).then(() => {
+        //     console.log('then')
+        // })
+        // console.log(3)
+
+        /*
+        上面的代码执行的流程：
+        遇到console.log(1) ---同步任务直接打印1
+        遇到setTimeout---属于宏任务留着后面执行
+        遇到new Promise ---同步任务直接执行打印 new Promise
+        遇到.then ----属于微任务，放入微任务队列后面来执行；
+        遇到console.log(3)---同步任务直接打印3
+        本轮宏任务执行完毕，现在去微任务列表里面看是否有微任务，有就执行  .then就执行
+        当一个宏任务执行完毕之后再去执行新的宏任务就只剩下setTimeout了  就打印2
+        */
+
+
+        async function async1() {
+            console.log('async1 start')
+            await async2()
+            console.log('async1 end')
+        }
+        async function async2() {
+            console.log('async2')
+        }
+        console.log('script start')
+        setTimeout(function () {
+            console.log('settimeout')
+        })
+        async1()
+        new Promise(function (resolve) {
+            console.log('promise1')
+            resolve()
+        }).then(function () {
+            console.log('promise2')
+        })
+        console.log('script end')
+
+
+
+
+
+    </script>
+</body>
+
+</html>

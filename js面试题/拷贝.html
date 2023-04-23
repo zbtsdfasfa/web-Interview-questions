@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 浅拷贝
+const obj1 = {
+    name : 'init',
+    arr : [1,[2,3],4],
+};
+const obj3=shallowClone(obj1) // 一个浅拷贝方法
+obj3.name = "update";
+obj3.arr[1] = [5,6,7] ; // 新旧对象还是共享同一块内存
+
+console.log('obj1',obj1) // obj1 { name: 'init',  arr: [ 1, [ 5, 6, 7 ], 4 ] }
+console.log('obj3',obj3) // obj3 { name: 'update', arr: [ 1, [ 5, 6, 7 ], 4 ] }
+    </script>
+</body>
+</html>
