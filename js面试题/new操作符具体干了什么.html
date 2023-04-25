@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // js中new是用于创建一个给定构造函数的实列对象
+        function person(name , age ){
+            this.name = name;
+            this.age = age;
+        }
+        person.prototype.sayName = function(){
+            console.log(this.name);
+        }
+        const person1 = new person('tom', 20)
+        console.log(person1);
+        person1.sayName()
+
+        /*
+        new 通过构造函数 Person 创建出来的实例可以访问到构造函数中的属性
+        new 通过构造函数 Person 创建出来的实例可以访问到构造函数原型链中的属性
+
+        */ 
+    //    返回一个基本数据类型
+       function test(name){
+        this.name = name;
+        return 1
+       }
+       const t =new test('黄弘章')
+       console.log(t);
+
+    //    返回个对象
+    function test2(name){
+        this.name = name ;
+        console.log(this);
+        return {
+            age:26
+        }
+    }
+    const t2 = new test2('黄弘章');
+    console.log(t2);
+    console.log(t2.name);
+
+    /*
+    new操作符的流程
+    1，创建一个新的对象obj
+    2，将对象和构建的函数通过原型链链接起来
+    3，将构建函数中的this绑定到对象obj上面
+    构建函数返回类型做判断，如果是原始数据类型就会被忽略，如果是返回的对象就正常处理
+    
+    */ 
+
+
+
+    </script>
+</body>
+</html>
