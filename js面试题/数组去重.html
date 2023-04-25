@@ -9,36 +9,53 @@
 <body>
     <script>
         // 数组去重
-        let arr = [1,2,2,3,4,1,2]
-        let arr1 =[3,4,45,5,5,63,34,34,22,22]
-        console.log(new Set(arr));
+        // let arr = [1,2,2,3,4,1,2]
+        // let arr1 =[3,4,45,5,5,63,34,34,22,22]
+        // console.log(new Set(arr));
         // 上面的代码得到的是一个对象 我们要把它转变为数组有下面两种方式：
-        console.log(Array.from(new Set(arr)));
+        // console.log(Array.from(new Set(arr)));
         // 扩展运算符号
-        console.log([...new Set(arr)]);
+        // console.log([...new Set(arr)]);
 
         // 封装成一个函数
-        function quchong(arrs){
-          return Array.from( new Set(arrs))
+        // function quchong(arrs){
+        //   return Array.from( new Set(arrs))
            
 
-        }
-        console.log(quchong(arr1));
-        console.log("这里是分割线");
+        // }
+        // console.log(quchong(arr1));
+        // console.log("这里是分割线");
 
 
         // 自己封装一个函数实现数组去重  利用indexof（）
+        // var arr2 = [1,2,2,3,4,5,4,5]
+        // function song(ass){
+        //     var brr = [];
+        //     for(var i = 0; i < ass.length; i++){
+        //         if(brr.indexOf(ass[i]) == -1){
+        //             brr.push(ass[i])
+        //         }
+        //     }
+        //     return brr
+        // }
+        // console.log(song(arr2));
+
+        let arr = [1,2,2,3,4,1,2]
+        console.log([...new Set(arr)]);
+
+        // 自己封装一个函数去重
         var arr2 = [1,2,2,3,4,5,4,5]
-        function song(ass){
+        function quchong(arrs){{
             var brr = [];
-            for(var i = 0; i < ass.length; i++){
-                if(brr.indexOf(ass[i]) == -1){
-                    brr.push(ass[i])
-                }
+           for(var i = 0; i <arrs.length; i++){
+            if(brr.indexOf(arrs[i]) == -1){
+                brr.push(arrs[i])
             }
-            return brr
-        }
-        console.log(song(arr2));
+           }
+           return brr
+        }}
+        
+        console.log(quchong(arr2));
 
         
     </script>
