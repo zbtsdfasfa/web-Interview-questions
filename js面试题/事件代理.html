@@ -15,12 +15,23 @@
         <li>item n</li>
       </ul>
     <script>
-        const lis =document.getElementsByTagName('li')
-        for(let i =0; i <  lis.length;i++){
-            lis[i].onclick =function(e){
+        // const lis =document.getElementsByTagName('li')
+        // for(let i =0; i <  lis.length;i++){
+        //     lis[i].onclick =function(e){
+        //         console.log(e.target.innerHTML);
+        //     }
+        // }
+
+        document.getElementById('list').addEventListener('click', function(e){
+            console.log(e.target);
+            var event = e || window.event;
+    var target = event.target || event.srcElement;
+            if(target.nodeName.toLocaleLowerCase == 'li'){
                 console.log(e.target.innerHTML);
             }
-        }
+        })
+
+
     </script>
 </body>
 </html>
