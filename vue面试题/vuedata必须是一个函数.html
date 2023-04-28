@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    // function Animal(){}
+    // Animal.prototype.data = {
+    //         name:'宠物店',
+    //         address:'广州'
+    //     }
+    //     var dog = new Animal()
+    //     var cat = new Animal()
+    //     console.log(dog.data.address);
+    //     console.log(cat.data.address);
+    //     dog.data.address = '武汉'
+    //     console.log(dog.data.address);
+    //     console.log(cat.data.address);
+        /*
+        dog 和 cat 的原型都是 Animal。自然会继承原型的属性。继承过来后，因为 data 
+        是普通对象，属于引用数据类型，所以 dog 和 cat 的 data 其实都指向同一块内存地址
+        */ 
+
+
+        function Animal(){
+            this.data = this.data()
+        }
+        Animal.prototype.data = function(){
+            return {name:'宠物店' , address:'广州'}
+        }
+        var dog = new Animal()
+        var cat = new Animal()
+        console.log(dog.data.address);
+        console.log(cat.data.address);
+        dog.data.address = '北京'
+        console.log(dog.data.address);
+        console.log(cat.data.address);
+        /*
+        用了 function 后，data 都被锁定在当前 function 的作用域中
+        ，然后被返回出去，相当于创建了另外一个对象，所以多个实例之间不会相互影响
+        */ 
+
+        
+
+
+
+   </script> 
+</body>
+</html>
