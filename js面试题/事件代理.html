@@ -22,14 +22,23 @@
         //     }
         // }
 
-        document.getElementById('list').addEventListener('click', function(e){
-            console.log(e.target);
-            var event = e || window.event;
-    var target = event.target || event.srcElement;
-            if(target.nodeName.toLocaleLowerCase == 'li'){
-                console.log(e.target.innerHTML);
-            }
-        })
+    //     document.getElementById('list').addEventListener('click', function(e){
+    //         console.log(e.target);
+    //         var event = e || window.event;
+    // var target = event.target || event.srcElement;
+    //         if(target.nodeName.toLocaleLowerCase == 'li'){
+    //             console.log(e.target.innerHTML);
+    //         }
+    //     })
+
+    const list = document.querySelector('.list');
+
+list.addEventListener('click', function(event) {
+  if (event.target.tagName === 'LI') {
+    console.log('你点击了列表项', event.target.textContent);
+  }
+});
+
 
 
     </script>
