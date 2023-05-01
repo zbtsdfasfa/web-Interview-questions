@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const isA = true
+        const isB = true
+        const isC = true
+        const isD = true
+        function A(cb){
+            console.log('执行A接口的逻辑');
+            setTimeout(() => {
+                if(isA) {
+                    cb('接口A执行完成');
+                }else {
+                    cb('接口A执行失败')
+                }
+            }, 1* 1000);
+        }
+        function B(cb){
+            console.log('执行B接口的逻辑');
+            setTimeout(() => {
+                if(isA) {
+                    cb('接口B执行完成');
+                }else {
+                    cb('接口B执行失败')
+                }
+            }, 1* 1000);
+        }
+        function C(cb){
+            console.log('执行C接口的逻辑');
+            setTimeout(() => {
+                if(isA) {
+                    cb('接口C执行完成');
+                }else {
+                    cb('接口C执行失败')
+                }
+            }, 1* 1000);
+        }
+        function D(cb){
+            console.log('执行D接口的逻辑');
+            setTimeout(() => {
+                if(isA) {
+                    cb('接口D执行完成');
+                }else {
+                    cb('接口D执行失败')
+                }
+            }, 1* 1000);
+        };
+
+
+
+        // 回调地狱
+        A(function(res){
+            console.log(res);
+            B(function(res){{
+                console.log(res);
+                C(function(res){
+                    console.log(res);
+                    D(function(res){
+                        console.log(res);
+                    })
+                })
+            }})
+        })
+    </script>
+</body>
+</html>

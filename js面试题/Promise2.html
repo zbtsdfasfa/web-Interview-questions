@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const isA = true
+        const isB = true
+        const isC = true
+        const isD = true
+        function A(){
+            return new Promise((res,rej) =>{
+                console.log('执行A接口的逻辑');
+                setTimeout(() => {
+                if(isA) {
+                //    执行成功
+                res('接口A执行完成')
+                }else {
+                //执行失败 
+                rej('接口A执行失败')
+                }
+            }, 1* 1000);
+            })
+        }
+        function B(){
+            return new Promise((res,rej) =>{
+                console.log('执行B接口的逻辑');
+                setTimeout(() => {
+                if(isA) {
+                //    执行成功
+                res('接口B执行完成')
+                }else {
+                //执行失败 
+                rej('接口B执行失败')
+                }
+            }, 1* 1000);
+            })
+        }
+        function C(){
+            return new Promise((res,rej) =>{
+                console.log('执行C接口的逻辑');
+                setTimeout(() => {
+                if(isA) {
+                //    执行成功
+                res('接口C执行完成')
+                }else {
+                //执行失败 
+                rej('接口C执行失败')
+                }
+            }, 1* 1000);
+            })
+        }
+        function D(){
+            return new Promise((res,rej) =>{
+                console.log('执行d接口的逻辑');
+                setTimeout(() => {
+                if(isA) {
+                //    执行成功
+                res('接口d执行完成')
+                }else {
+                //执行失败 
+                rej('接口d执行失败')
+                }
+            }, 1* 1000);
+            })
+        }
+    //    const promise = A()
+    //    const promiseB = promise.then(res=>{
+    //     console.log(res);
+    //     return B()
+    //    })
+    //    const promiseC =  promiseB.then(res=>{
+    //     console.log(res);
+    //     return C()
+    //    })
+    //    const promiseD = promiseC.then(res=>{
+    //     console.log(res);
+    //     return D()
+    //    })
+    //    promiseD.then(res=>{
+    //     console.log(res);
+    //    })
+
+    A().then(res =>{
+        console.log(res);
+        return B()
+    })
+    .then(res=>{
+        console.log(res);
+        return C()
+    })
+    .then(res=>{
+        console.log(res);
+        return D()
+    })
+    .then(res=>{
+        console.log(res);
+    })
+
+    </script>
+</body>
+</html>
