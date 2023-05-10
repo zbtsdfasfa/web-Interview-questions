@@ -85,7 +85,7 @@
 
 
         /* 方式五：gaid网格布局 */
-        .father {
+        /* .father {
             display: grid;
             align-items:center;
             justify-content: center;
@@ -98,15 +98,39 @@
             width: 10px;
             height: 10px;
             background: red;
+        } */
+
+
+        /* 清除浮动的方法
+        1，给父元素加高度height
+        2，在父元素添加overflow：hiden
+        3，添加要给空的div  并且设置样式clear：both
+        4，委元素
+        */
+        .father {
+            width: 360px;
+            background-color: red;
+        }
+        .box1 ,.box2,.box3{
+            float: left;
+            margin-left: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+        }
+        .clear::after {
+            display: block;
+            content: "";
+            clear: both;
         }
     </style>
 </head>
 
 <body>
-    <div class="father">
-        <div class="son">
-
-        </div>
+    <div class="father clear">
+            <div class="box1"></div>
+            <div class="box2"></div>
+            <div class="box3"></div>
     </div>
 </body>
 
