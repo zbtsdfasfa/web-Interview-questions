@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        /* 左浮动 */
+        .leftFix {
+            float: left;
+        }
+        /* 有浮动 */
+        .rightFix {
+            float: right;
+        }
+        /* 清除浮动 */
+        .clearBOth::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .box {
+            width: 960px;
+            text-align: center;
+            margin: 100px auto;
+        }
+        .logo,.banner2 {
+            width: 200px;
+            height: 80px;
+            line-height: 80px;
+            background-color: gray;
+        }
+        .banner1 {
+            width: 540px;
+            height: 80px;
+            line-height: 80px;
+            background-color: gray;
+            margin: 0 10px;
+        }
+        .meun {
+            width: 960px;
+            height: 30px;
+            background-color: gray;
+            line-height: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .item1,.item2 {
+            width: 368px;
+            height: 198px;
+            border: 1px solid black;
+            line-height: 198px;
+        }
+        .item1 {
+            margin-right: 10px;
+        }
+        .item3,.item4,.item5,.item6 {
+            width: 178px;
+            height: 198px;
+            border: 1px solid black;
+            margin-right: 10px;
+            line-height: 198px;
+        }
+        .up {
+            margin-bottom: 10px;
+        }
+        .item7,.item8,.item9 {
+            width: 198px;
+            height: 128px;
+            border: 1px solid black;
+            margin-bottom: 10px;
+            line-height: 128px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 最外面的大盒子 -->
+    <div class="box">
+        <!-- 头部区域 -->
+        <div class="header clearBOth">
+            <div class="logo leftFix">logo</div>
+            <div class="banner1 leftFix">banner1</div>
+            <div class="banner2 leftFix">banner2</div>
+        </div>
+        <!-- 中间菜单区域 -->
+        <div class="meun">菜单</div>
+        <!-- 栏目区域 -->
+        <div class="boxtip clearBOth">
+            <!-- 左边区域 -->
+            <div class="left leftFix">
+                <!-- 上面区域 -->
+                <div class="up clearBOth">
+                    <div class="item1 leftFix">栏目一</div>
+                    <div class="item2 leftFix">栏目二</div>
+                </div>
+                <!-- 下面区域 -->
+                <div class="down clearBOth">
+                    <div class="item3 leftFix">栏目三</div>
+                    <div class="item4 leftFix">栏目四</div>
+                    <div class="item5 leftFix">栏目五</div>
+                    <div class="item6 leftFix">栏目六</div>
+                </div>
+            </div>
+            <!-- 右边区域 -->
+            <div class="right rightFix">
+                <div class="item7">栏目七</div>
+                <div class="item8">栏目八</div>
+                <div class="item9">栏目九</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
