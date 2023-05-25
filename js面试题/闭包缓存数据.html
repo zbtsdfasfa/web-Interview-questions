@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function createCache() {
+            // 定义一个空对象，用于存储数据
+            const cache = {}
+            // 定义一个函数get用于获取缓存数据
+            function get(key) {
+                if(key in cache) {
+                    return cache[key];
+                }
+                return null;
+            }
+            // 定义一个函数set用于设置缓存数据
+            function set(key,value) {
+                cache[key] = value
+            }
+            // 返回get和set函数对象
+            return {get, set}
+        }
+
+        // 创建一个缓存对象
+        const cache = createCache();
+
+        // 设置缓存数据
+        cache.set('love' ,'ball')
+        cache.set('name' ,'Tom')
+
+        console.log(cache.get('love'));
+        console.log(cache.get('name'));
+
+        /*
+        在上面的示例中，createCache 函数返回了一个包含 get 和 set 函数的对象，用于缓存数据。在 set 函数中，
+        缓存数据存储在一个名为 cache 的私有空间中。
+        在 get 函数中，会根据传入的 key 查找缓存数据，如果缓存数据存在，则返回对应的值，否则返回 null。
+        通过使用闭包创建数据缓存，我们可以实现数据的快速、高效存储和查找，增加程序的运行效率和安全性。
+        */ 
+
+    </script>
+</body>
+
+</html>
