@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function createCounter() {
+            // 定义私有变量 count
+            let count = 0;
+
+            // 定义返回函数 incrementAndGet，可以访问 count 变量
+            function incrementAndGet() {
+                count++;
+                return count;
+            }
+
+            // 返回闭包函数，使其能够访问私有变量 count
+            return incrementAndGet;
+        }
+
+        // 创建一个计数器
+        const counter = createCounter();
+
+        // 调用闭包函数，访问私有变量 count
+        console.log(counter()); // 输出 1
+        console.log(counter()); // 输出 2
+        console.log(counter()); // 输出 3
+
+
+        /*
+        在上面的示例中，createCounter 函数返回了一个闭包函数 incrementAndGet，在 incrementAndGet 
+        函数中定义了一个私有变量 count，只能被 incrementAndGet 函数所访问。
+        这样，无论是内部还是外部的代码，都不能直接访问或修改私有变量 count，从而保证了程序的相对安全性。
+        */ 
+    </script>
+</body>
+
+</html>
