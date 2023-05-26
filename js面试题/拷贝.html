@@ -61,32 +61,61 @@ function shallowClone(obj) {
 // console.log(result.name);
 // console.log(obj1.name);
 
-const obj = {
-    name:'哈哈',
-    age:'132'
-}
+// const obj = {
+//     name:'哈哈',
+//     age:'132'
+// }
+// function deepClone(obj) {
+//     if(typeof obj !== 'object' ||obj === null ){
+//         return obj
+//     }
+//     let result;
+//     if(Array.isArray(obj)) {
+//         result =[];
+//         for(let key in obj) {
+//             result[key] = deepClone(obj[key])
+//         }
+//     }else {
+//         result = {}
+//         for(let key in obj) {
+//             if(obj.hasOwnProperty(key)) {
+//                 result[key] =deepClone(obj[key])
+//             }
+//         }
+//     }
+//     return result
+// }
+// const deep = deepClone(obj)
+// obj.name = '刘德华'
+// console.log(obj);
+// console.log(deep);
+// const obj= {
+//     name:'年后',
+//     age:'111'
+// }
+const obj= [1,2,3,4]
 function deepClone(obj) {
-    if(typeof obj !== 'object' ||obj === null ){
+    if(typeof obj !== 'object' || obj == null) {
         return obj
     }
     let result;
-    if(Array.isArray(obj)) {
-        result =[];
-        for(let key in obj) {
-            result[key] = deepClone(obj[key])
+    if(Array.isArray(result)) {
+        result = [];
+        for(let i = 0; i <obj.length; i++) {
+            result[i] = deepClone(obj[i])
         }
     }else {
         result = {}
         for(let key in obj) {
             if(obj.hasOwnProperty(key)) {
-                result[key] =deepClone(obj[key])
+                result[key] = deepClone(obj[key])
             }
         }
     }
     return result
 }
 const deep = deepClone(obj)
-obj.name = '刘德华'
+obj.push('邓紫棋')
 console.log(obj);
 console.log(deep);
 
