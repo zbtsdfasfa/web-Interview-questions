@@ -9,16 +9,91 @@
 <body>
     <script>
         // 浅拷贝
-const obj1 = {
-    name : 'init',
-    arr : [1,[2,3],4],
-};
-const obj3=shallowClone(obj1) // 一个浅拷贝方法
-obj3.name = "update";
-obj3.arr[1] = [5,6,7] ; // 新旧对象还是共享同一块内存
+// const obj1 = {
+//     name : 'init',
+//     arr : [1,[2,3],4],
+// };
+// const obj3=shallowClone(obj1) // 一个浅拷贝方法
+// obj3.name = "update";
+// obj3.arr[1] = [5,6,7] ; // 新旧对象还是共享同一块内存
 
-console.log('obj1',obj1) // obj1 { name: 'init',  arr: [ 1, [ 5, 6, 7 ], 4 ] }
-console.log('obj3',obj3) // obj3 { name: 'update', arr: [ 1, [ 5, 6, 7 ], 4 ] }
+// console.log('obj1',obj1) // obj1 { name: 'init',  arr: [ 1, [ 5, 6, 7 ], 4 ] }
+// console.log('obj3',obj3) // obj3 { name: 'update', arr: [ 1, [ 5, 6, 7 ], 4 ] }
+/**
+ * 这段代码的作用是实现一个浅拷贝函数，用于复制一个对象并返回一个新的对象。下面对代码的每一部分进行解释：
+
+1. `function shallowClone(obj) { ... }`：定义了一个使用 obj 作为参数的函数，函数中的代码用于拷贝 obj 对象。
+2. `const newObj = {};`：定义了一个空对象 newObj，用于存储拷贝后的数据。
+3. `for(let prop in obj) { ... }`：遍历 obj 对象中的属性。
+4. `if(obj.hasOwnProperty(prop)){ ... }`：判断当前属性是否是 obj 对象的自有属性，避免遍历到从原型链继承而来的属性。
+5. `newObj[prop] = obj[prop];`：将 obj 对象的当前属性值复制给 newObj 对象的对应属性。
+6. `return newObj;`：返回拷贝后的对象 newObj。
+
+综上，这段代码的核心思想是将原对象的属性一一复制到一个新对象中，并返回新的对象。需要注意的是，这种复制方式是浅拷贝，只复制了每个属性的值，
+如果原对象的某些属性是对象类型或数组类型等复杂类型，那么仅仅复制了其引用地址，实际上是对同一个对象的引用。如果需要实现深拷贝，需要采取其他方式进行实现。
+ * 
+
+function shallowClone(obj) {
+    const newObj = {};
+    for(let prop in obj) {
+        if(obj.hasOwnProperty(prop)){
+            newObj[prop] = obj[prop];
+        }
+    }
+    return newObj;
+}*/
+// const obj1 = {
+//   name: '小明',
+//   age: 18,
+//   books: ['三国演义', '水浒传']
+// };
+// function shallowClone(obj1) {
+//     const obj2 = {}
+//     for(let key in obj1) {
+//         if(obj1.hasOwnProperty(key)){
+//             obj2[key] = obj1[key]
+//         }
+//     }
+//     return obj2
+// }
+// obj1.name = '小红'
+// const result = shallowClone(obj1)
+// console.log(result.name);
+// console.log(obj1.name);
+
+const obj = {
+    name:'哈哈',
+    age:'132'
+}
+function deepClone(obj) {
+    if(typeof obj !== 'object' ||obj === null ){
+        return obj
+    }
+    let result;
+    if(Array.isArray(obj)) {
+        result =[];
+        for(let key in obj) {
+            result[key] = deepClone(obj[key])
+        }
+    }else {
+        result = {}
+        for(let key in obj) {
+            if(obj.hasOwnProperty(key)) {
+                result[key] =deepClone(obj[key])
+            }
+        }
+    }
+    return result
+}
+const deep = deepClone(obj)
+obj.name = '刘德华'
+console.log(obj);
+console.log(deep);
+
+
+
+
+
     </script>
 </body>
 </html>
