@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // class Student {
+        //     constructor(name,number) {
+        //         this.name = name;
+        //         this.number= number
+        //     }
+        //     // 一个方法
+        //     sayHi() {
+        //        console.log( `我是${this.name} ,我的学号是${this.number}`);
+        //     }
+        // }
+        // // 通过new创建实列
+        // const HHz = new Student('黄弘章' , 1931120304)
+        // console.log(HHz.name);
+        // console.log(HHz.number);
+    
+        // HHz.sayHi()
+
+
+        class People {
+            constructor (name) {
+                this.name = name
+
+            }
+            eat() {
+                console.log(`${this.name} eat someThing`);
+            }
+        }
+
+        class Student extends People {
+            constructor(name, number){
+                super(name)
+                this.number = number
+            }
+            sayHi() {
+                console.log(`我是${this.name} 我的学号是：${this.number}`);
+            }
+        }
+         const HHz = new Student('黄弘章' , 1931120304)
+        console.log(HHz.name);
+        console.log(HHz.number);
+        HHz.sayHi()
+        HHz.eat()
+        console.log( HHz instanceof Student);
+
+
+
+        function createCache() {
+            // 存储隐藏数据
+            const cache = {}
+            // 定义一个函数用来设置缓存数据
+            function set(key ,value) {
+                cache[key] = value
+            }
+            // 定义一个get函数，用来获取数据
+            function get(key) {
+                if(key in cache ) {
+                    return cache[key]
+                }
+            }
+            return {get , set }
+        }
+        // 定义一个api
+        const cacher = createCache()
+        cacher.set('name' , '我爱你')
+        console.log(cacher.get('name'));
+
+
+
+
+        // 手写深拷贝
+        function deepClone(obj) {
+            if(typeof obj !== 'object' || obj == null) {
+                return obj
+            }
+            let result;
+            if(Array.isArray(obj)){
+                result = []
+                for(let i = 0; i < obj.length; i++) {
+                    result[i] = deepClone(obj[i])
+                }
+            }else {
+                result = {}
+                for(let key in obj) {
+                    if(obj.hasOwnProperty(key)) {
+                        result[key] = deepClone(obj[key])
+                    }
+                }
+            }
+            return result
+        }
+    </script>
+</body>
+</html> 

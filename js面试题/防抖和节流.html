@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div id="div1" draggable="true">可以拖拽</div>
+    <script>
+        function debounce(fn,delay = 500) {
+            let timer = null
+            return function () {
+                if(timer) {
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(() => {
+                    fn.apply(this,arguments)
+                    timer = null
+                }, delay);
+            }
+        }
+      
+        // 封装一个防抖函数
+        // function debounce(fn, delay = 500) {
+        //     // timer在闭包中
+        //     let timer = null
+        //     return function () {
+        //         if(timer){
+        //             clearTimeout(timer)
+        //         }
+        //         timer = setTimeout(() => {
+        //             fn.apply(this,arguments)
+        //             timer =null
+        //         }, delay);
+        //     }
+        // }
+        // inp.addEventListener('keyup', debounce(
+        //     function(){
+        //     console.log(inp.value);
+        // }
+        // ),500)
+
+        // 节流
+        function throttle(fn,delay=200) {
+            let timer = null;
+            return function () {
+                if(timer) {
+                    return timer
+                }
+                timer = setTimeout(()=> {
+                    fn.apply(this,arguments)
+                    timer = null
+                },delay)
+            }
+        }
+        const  box = document.getElementById('div1')
+        box.addEventListener('mousemove' , throttle(function(e){
+            console.log(e.offsetX,e.offsetY);
+        }),200)
+
+
+        // 手写深拷贝
+        function deepClone(obj) {
+            if( typeof obj !== 'object' || obj == null){
+                return obj
+            }
+            let result;
+            if(Array.isArray(obj)) {
+                result = [];
+                for(let i = 0; i < obj.length; i++) {
+                    result[i] = deepClone(obj[i])
+                }
+            }else {
+                result = {}
+                for(let key in obj) {
+                    if(obj.hasOwnProperty(key)){
+                        result[key] = deepClone(obj[key])
+                    }
+                }
+            }
+            return result
+        }
+    </script>
+</body>
+</html>

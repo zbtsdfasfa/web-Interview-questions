@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        // function unique(arr) {
+        //     return Array.from(new Set(arr))
+        // }
+        // var arr = [1, 1, 'true', 'true', true, true, 15, 15, false, false,
+        //     undefined, undefined, null, null, NaN, NaN, 'NaN', 0, 0, 'a', 'a', {}, {}];
+        // console.log(unique(arr))
+
+
+        // function unique2(arr) {
+        //     var newArry = [];
+        //     for (var i = 0 ; i < arr.length;i++) {
+        //         if(newArry.indexOf(arr[i]) === -1) {
+        //             newArry.push(arr[i])
+        //         }
+        //     }
+        //     return newArry
+        // }
+        // console.log(unique2(arr));
+
+ var arr = [false,true,undefined,null,NaN,0,1,{}, {},'a','a',NaN]
+        function unique(arr) {
+            let map = new Map()
+            let array = new Array()
+            for (let i = 0; i < arr.length; i++) {//-------------新增部分----------
+                if (typeof arr[i] === 'object') {//判断是否是对象
+                    let a = JSON.stringify(arr[i])//JSON序列化变成字符串
+                    if (!map.has(a)) {//map判别是否存在{}字符而不是{}对象
+                        map.set(a, true)
+                        array.push(arr[i])
+                    }
+                } else {//---------------------
+                    if (!map.has(arr[i])) {
+                        map.set(arr[i], true)
+                        array.push(arr[i])
+                    }
+                }
+            }
+            return array
+        }
+        console.log(unique(arr))
+
+
+
+    </script>
+
+</body>
+
+</html>
