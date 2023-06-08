@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 0;
+            height: 0;
+            border: 100px solid;
+            border-color: transparent transparent #d9534f transparent;
+
+        }
+
+        .triangle {
+            width: 0;
+            border: 100px solid transparent;
+            border-bottom-color: rgba(66, 142, 212, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="triangle"></div>
+    <script>
+        let arr = [false, true, undefined, null, NaN, 0, 1, {}, {}, 'a', 'a', NaN]
+        // Array.prototype.uniq = function () {
+        //     return [...new Set(this)]
+        // }
+        // console.log(arr.uniq(),1212);
+        Array.prototype.uniq = function () {
+            let arr = []
+            // 定义一个标记flag，判断是不是第一个nan
+            let flag = true;
+            this.forEach((item) => {
+                if (arr.indexOf(item) === -1) {
+                    if (item !== item) {
+                        if (flag) {
+                            arr.push(item)
+                            flag = false
+                        }
+                    } else {
+                        arr.push(item)
+                    }
+                }
+            })
+            return arr
+        }
+
+        let uniqueArr = arr.uniq()
+        console.log(uniqueArr)
+
+
+        let myString = "hello world"
+        function strLength(s, bUnicode255For1) {
+            if (bUnicode255For1) return s.length;
+            let len = s.length
+            for (let i = 0; i < s.length; i++) {
+                if (s[i].charCodeAt() > 255) len++
+            }
+            return len
+        }
+        let lengthWithoutUnicode = strLength(myString, true);
+        console.log(lengthWithoutUnicode);
+
+        let ee = (1,2)
+        let aa  = Array.of(ee)
+        console.log(aa);
+        console.log(Array.of(1,2));
+
+
+        let arrs = []
+        console.log(arrs instanceof Array);
+        console.log(Array.isArray(arrs));
+        console.log(arrs.construct === Array)
+        console.log(Object.prototype.toString.call(arrs));
+    </script>
+</body>
+
+</html>

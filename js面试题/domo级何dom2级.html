@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="button">点击就会弹出弹框</button>
+    <script>
+        // var btn = document.getElementById("button");
+        // btn.onclick = function () {
+        //     alert(1);
+        // }
+        // btn.onclick = function () {
+        //     alert(2);
+        // } //只弹出2
+
+        var btn = document.getElementById('button')
+        btn.addEventListener('click' , function() {
+            alert('1')
+        })
+        btn.addEventListener('click' , function() {
+            alert('2')
+        })
+
+        let arr = [false, true, undefined, null, NaN, 0, 1, {}, {}, 'a', 'a', NaN]
+
+        Array.prototype.uniq = function () {
+            let arr = []
+            let flag = true
+            this.forEach((item => {
+                if(arr.indexOf(item) === -1) {
+                    if(item !== item) {
+                        if(flag) {
+                            arr.push(item)
+                            flag = false
+                        }
+                    }else {
+                        arr.push(item)
+                    }
+                }
+            }))
+            return arr
+        }
+        let myarr = arr.uniq()
+        console.log(myarr);
+
+
+    </script>
+</body>
+
+</html>

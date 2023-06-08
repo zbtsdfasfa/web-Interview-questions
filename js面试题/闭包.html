@@ -18,8 +18,61 @@
     <p id="size-14">size14 </p><button onclick="makeSizer(14)">size14</button><br>
     <p id="size-16">size16 </p><button onclick="makeSizer(16)">size16</button><br> -->
     <script>
-        let arrs = [1,2,3,4]
-        
+        // let arr = [1,2,3,4]
+        // let newArr = arr.map((item,index) => {
+        //     return item*2
+        // })
+        // console.log(newArr);
+        // arr2 = arr.join(',')
+        // console.log(arr2);
+        // arr3 = arr2.split(',')
+        // console.log(arr3);
+
+
+        // var arr=[1,2,3,2,9,[2,3,[1]],[2,3]]
+        // let newArr = arr.join(',').split(',').map((item,index) =>{
+        //     return parseInt(item)
+        // })
+        // console.log(newArr);
+        // console.log(arr.flat());
+
+
+        var arr=[1,2,3,2,9,9,1]
+        // var newArr = [...new Set(arr)]
+        // console.log(newArr);
+
+        // function fn(arr) {
+        //     let newarr = []
+        //     arr.filter((item,index)=> {
+        //         if(newarr.indexOf(item) === -1) {
+        //             newarr.push(item)
+        //         }
+        //     })
+        //     return newarr
+        // }
+        // console.log(fn(arr));
+
+        // function fn(arr) {
+        //     let newarr = []
+        //     arr.filter((item,index)=> {
+        //         if(!newarr.includes(item)) {
+        //             newarr.push(item)
+        //         }
+        //     })
+        //     return newarr
+        // }
+        // console.log(fn(arr));
+
+        // 数组排序
+        // let newarr = arr.sort((a,b) => {
+        //     return b - a
+        // })
+        // console.log(newarr);
+
+        let newarr = arr.every((item,index) => {
+            return item > 2
+        })
+        console.log(newarr);
     </script>
 
 

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 方法一：定位加 margin：auto */
+        /* .father {
+            width: 500px;
+            height: 300px;
+            border: 1px solid red;
+            position: relative;
+        }
+        .son {
+            width: 100px;
+            height: 40px;
+            border: 1px solid skyblue;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        } */
+
+        /* 方式二： 定位加margin负值 */
+        /* .father {
+            width: 500px;
+            height: 300px;
+            border: 1px solid red;
+            position: relative;
+        }
+        .son {
+            width: 100px;
+            height: 50px;
+            background-color: skyblue;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -25px;
+            margin-left: -50px;
+        } */
+
+        /* 方式三定位 + transform */
+        /* .father {
+            width: 500px;
+            height: 300px;
+            border: 1px solid red;
+            position: relative;
+        }
+        .son {
+            width: 100px;
+            height: 50px;
+            background-color: skyblue;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        } */
+
+
+        /* 方式四 flex布局 */
+        /* .father {
+            width: 500px;
+            height: 300px;
+            border: 1px solid red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .son {
+            width: 100px;
+            height: 50px;
+            background-color: skyblue;
+        } */
+
+        .loading {
+            width: 50px;
+            height: 50px;
+            animation: rotate 2s linear 0s infinite;
+        }
+
+        .path {
+            animation: dash 2s ease-in-out infinite;
+            stroke: #00b390;
+            stroke-width: 2;
+            stroke-dasharray: 90 150;
+            stroke-dashoffset: 0;
+            stroke-linecap: round;
+        }
+
+        @keyframes rotate {
+            from {
+                tranform: rotate(0deg);
+            }
+
+            to {
+                tranform: rotate(360deg);
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1 150;
+                stroke-dashoffset: 0;
+            }
+
+            50% {
+                stroke-dasharray: 90 150;
+                stroke-dashoffset: -40px;
+            }
+
+            100% {
+                stroke-dasharray: 90 150;
+                stroke-dashoffset: -120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="father">
+        <div class="son"></div>
+    </div> -->
+    <svg classname="loading" viewbox="25 25 50 50">
+        <circle cx="50" cy="50" r="25" classname="path" fill="none" />
+    </svg>
+</body>
+
+</html>
